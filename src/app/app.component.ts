@@ -11,6 +11,6 @@ export class AppComponent implements OnInit {
   name = 'Angular ' 
 
   ngOnInit(): void {
-    of(1,2,3).subscribe(data => console.log(data))
+    of(1,2,3).subscribe(data => console.log('',data))
   }
 }
