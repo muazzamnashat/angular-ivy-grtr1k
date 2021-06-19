@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { of, from, pipe } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -11,10 +11,11 @@ export class AppComponent implements OnInit {
   arr = [];
   ngOnInit(): void {
     of(1, 2, 3)
-      .pipe(map(item => item * 2))
+      .pipe(tap(item => item * 2))
       .subscribe(data => {
-        console.log(typeof data);
-        this.arr.push(data)});
+        console.log(data);
+        this.arr.push(data);
+      });
 
     from(['nashat', 'is', 'awesome'])
       .pipe(map(item => item + '  added extra'))
@@ -24,6 +25,6 @@ export class AppComponent implements OnInit {
         () => console.log('It is completed')
       );
 
-      console.log(this.arr)
+    console.log(this.arr);
   }
 }
